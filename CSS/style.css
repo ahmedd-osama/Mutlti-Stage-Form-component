@@ -1,0 +1,504 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+img{
+    max-width: 100%;
+}
+html{
+}
+:root{
+    font-size: 62.5%;
+    --Marine-blue: hsl(226, 96%, 18%);
+    --Purplish-blue: hsl(243, 100%, 62%);
+    --Pastel-blue: hsl(228, 100%, 84%);
+    --Light-blue: hsl(206, 94%, 87%);
+    --Strawberry-red: hsl(354, 84%, 57%);
+    --background-c: hsla(206, 94%, 87%, 0.35);
+    --bg-gray: rgba(177, 176, 176, 0.226);
+    --text-gray:rgb(150, 148, 148);
+}
+/* 
+@media (max-width: 470px){
+    :root{
+        font-size: 10px;
+    }
+} */
+body{
+    min-height: 100vh;
+    font-family: monospace, sans-serif;
+    background-color: var(--background-c);
+}
+/* components */
+.sub-text{
+    color: var(--text-gray);
+    font-size: 1.4rem;
+}
+/* App */
+
+.container{
+    background-color: white;
+    width: 70%;
+    display: flex;
+    gap: 1rem;
+    margin: 5rem auto;
+    padding: 14px;
+    border-radius: 18px;
+    box-shadow: 0 0 40px 1px rgba(61, 61, 61, 0.14);
+    min-height: 60vh;
+}
+@media (max-width: 930px){
+    .container{width: 90%;}
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url(../assets/images/bg-sidebar-desktop.svg);
+    background-position: center;
+    width: 200px;
+    font-size: 1.6rem;
+    color: white;
+    border-radius: 10px;
+    /* min-height: 565px; */
+}
+nav .step{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 20px;
+    margin-top: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+nav .step:hover{
+    background-color: rgba(68, 68, 68, 0.212);
+}
+nav .step .num{
+    width: 2em;
+    height: 2em;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: 0.5s ;
+}
+nav .step.active .num{
+    background-color: var(--Pastel-blue);
+    color: black;
+    border-color: var(--Pastel-blue);
+}
+nav .step .step-title{
+    flex-grow: 1;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    white-space: nowrap;
+}
+/* form input */
+form{
+    display: flex;
+    flex-direction: column;
+}
+.user-input .changable .step:not(:first-child){
+    display: none;
+}
+.user-input{
+    flex-grow: 1;
+    border-radius: 10px;
+    padding: 0 5%;
+}
+.user-input .step{
+    display: flex;
+    flex-direction: column;
+}
+.user-input h2{
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+.user-input .input-info{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 1.4rem;
+
+}
+.user-input .input-info > label{
+    display: block;
+}
+.user-input .input-error{
+    display: block;
+    color: var(--Strawberry-red);
+    width: fit-content;
+}
+.user-input input{
+    position: relative;
+    font-size: 1.6rem;
+    padding: 4px;
+    margin-top: 4px;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.466);
+    outline: none;
+}
+.user-input input:focus-visible{
+    border-color: var(--Purplish-blue);
+}
+.user-input input:invalid{
+    border-color: var(--Strawberry-red);
+}
+.user-input .required-pop::before{
+    position: absolute;
+    content: "This Field Is required";
+    color: var(--Strawberry-red);
+    font-size: 1.4rem;
+    top: -10px;
+    left: 0;
+}
+/* plans */
+.user-input .step-2{
+    display: flex;
+    flex-direction: column;
+}
+.step-2 .plans{
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+    margin-top: 30px;
+}
+.user-input .yearly .monthly{
+    display: none;
+}
+.user-input .monthly .yearly{
+    display: none;
+}
+.step-2 .plan-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    min-height: 120px;
+    width: 30%;
+    border: 1px solid rgba(128, 128, 128, 0.253);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.step-2 .plan-card .offer{
+    font-size: 1.2rem;
+    color: var(--Purplish-blue);
+    font-weight: 600;
+}
+.step-2 .plan-card.active{
+    border-color: blue;
+    border-width: 1.5px;
+    background-color: var(--bg-gray);
+}
+.step-2 .plan-card img{
+    margin-bottom: auto;
+    margin-right: auto;
+    width: 35%;
+}
+.step-2 .plan-card p{
+    font-size: 1.6rem;
+
+}
+.step-2 .plan-timing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-gray);
+    background-color: var(--bg-gray);
+    border-radius: 8px;
+    padding: 0.5em;
+    transition: 0.3s;
+
+}
+.step-2 .plan-timing.monthly p:first-child{
+    color: black;
+}
+.step-2 .plan-timing.yearly p:last-child{
+    color: black;
+}
+.step-2 .plan-timing .toggle{
+    background-color: var(--Marine-blue);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 10px;
+    padding: 2px 2px;
+    width: 30px;
+    height: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.step-2 .plan-timing.yearly .toggle{
+    justify-content: flex-end;
+}
+.step-2 .plan-timing .toggle span{
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 10px;
+    background-color: white;
+}
+/* Add-ons */
+.step-3 .add-ons{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+}
+.step-3 .add-ons .add{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 10px;
+    gap: 5px;
+    border-radius: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.24);
+    cursor: pointer;
+}
+.step-3 .add-ons .add.checked{
+    border-color: var(--Purplish-blue);
+    background-color: var(--bg-gray);
+}
+.step-3 .add-ons .add input{
+    margin: 0 8px;
+    cursor: pointer;
+}
+.step-3 .add-ons .add .info{
+    flex-grow: 1;
+}
+.step-3 .add-ons .add .info .title{
+    font-size: 1.6rem;
+}
+.step-3 .add-ons .add .info .sub-text{
+    font-size: 1.2rem;
+}
+.step-3 .add-ons .add .price p{
+    font-size: 1.4rem;
+    color: var(--Purplish-blue);
+}
+/* summary */
+.user-input .step-4 .invoice{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    background-color: var(--bg-gray);
+    padding: 15px;
+    border-radius: 10px;
+}
+.step-4 .invoice-head{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.step-4 .invoice-head::before{
+    position: absolute;
+    content: "";
+    width: 90%;
+    height: 1px;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+    background-color: var(--text-gray);
+}
+.step-4 .invoice-head .plan-name {
+    font-size: 1.6rem;
+    color: var(--Purplish-blue);
+    text-transform: capitalize;
+}
+.step-4 .invoice-head a{
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.step-4 .invoice-head a::after{
+    background-color: var(--text-gray);
+    bottom: -2px;
+}
+.step-4 .invoice-head .price{
+    font-size: 1.6rem;
+    color: var(--Purplish-blue);
+    font-weight: 700;
+}
+.step-4 .add-ons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+.step-4 .add{
+    display: flex;
+    justify-content: space-between;
+}
+.step-4 .add .price{
+    font-size: 1.4rem;
+    color: var(--Purplish-blue);
+}
+.step-4 .total{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.step-4 .total-price{
+    color: var(--Purplish-blue);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+/* Thak you page */
+.user-input .thank-you{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.user-input .thank-you img{
+    margin-top: 50px;
+}
+.user-input .thank-you h2{
+    margin-top: 20px;
+}
+.user-input .thank-you p{
+    margin-top: 20px;
+    text-align: center;
+}
+/* form navigation */
+.form-nav{
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.form-nav button{
+    border: none;
+    padding: 0.5em;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    width: 10rem;
+}
+#next-btn{
+    background-color: var(--Marine-blue);
+    margin-left: auto;
+    transition: 0.3s ease;
+}
+#next-btn:hover{
+    background-color: var(--Purplish-blue);
+}
+#confirm-btn{
+    background-color: var(--Purplish-blue);
+    display: none;
+}
+#back-btn{
+    color: gray;
+    background-color: transparent;
+    font-weight: 700;
+    transition: color 0.5s ease;
+    padding-left: 0;
+    text-align: left;
+}
+#back-btn:hover{
+    color: black;
+}
+/* footer */
+footer{
+    font-size: 1.4rem;
+    position: absolute;
+    width: 90%;
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 2;
+}
+.attribution{
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    white-space: nowrap;
+}
+a::after{
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    bottom: 0;
+    left: 0;
+}
+
+@media (max-width: 640px){
+    .container{
+        flex-direction: column;
+        min-height: 80vh;
+    }
+    nav{
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        background-image: url(../assets/images/bg-sidebar-mobile.svg);
+    }
+    nav .step:hover{
+        background-color: initial;
+    }
+    nav .step .step-title{
+        display: none;
+    }
+    .user-input{
+        height: 100%;
+        display: flex;
+    }
+    .user-input form{
+    }
+    nav .step{
+        width: fit-content;
+        margin: 10px 5;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .step-2 .plans{
+        flex-direction: column;
+    }
+    .step-2 .plans .plan-card{
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+        height: fit-content;
+        min-height: 0;
+        margin-bottom: 10px;
+        text-align: center;
+        flex-wrap: wrap;
+    }
+    .step-2 .plans .plan-card p{
+        margin-right: 10px;
+        font-size: 2rem;
+        
+    }
+    .step-2 .plans .plan-card img{
+        width: 25%;
+        height: fit-content;
+        margin-bottom: 0px;
+        margin-right: 0;
+        padding: 10px;
+    }
+}
+@media (min-width: 641px){
+    .user-input form{
+        height: 100%;
+    }
+}
